@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use Exception;
 use Illuminate\Console\Command;
-use App\Http\Controllers\copy_csv;
+use App\Http\Controllers\daywise_stat;
 class copy extends Command
 {
     /**
@@ -27,8 +27,8 @@ class copy extends Command
     public function handle()
     {
         try{
-            $object= app()->make(copy_csv::class);
-        $object->importDataFromCSV_equity();
+            $object= app()->make(daywise_stat::class);
+        $object->stat_day(5450,'2019-11-15','2019-12-04',100,false);
         }
         catch(Exception $e){
             echo $e;

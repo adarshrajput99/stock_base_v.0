@@ -11,7 +11,7 @@ class copy_csv extends Controller
     public function importDataFromCSV()
 {
     $filePath = storage_path('data/fobhav.csv');
-    $filename = '/home/adarsh/stock_base_v.0/storage/data/fobhav.csv';
+    $filename = '/home/restolabs/stock_base_v.0/storage/data/fobhav.csv';
 
     $file = new SplFileObject($filename, 'r');
     $headerRow = $headerRow = [
@@ -40,9 +40,13 @@ class copy_csv extends Controller
 
         $rowData = array_combine($headerRow, $line);
         try{
-            DB::table('table_name')->insert($rowData);
+            if($rowData['SYMBOL']=='NIFTY' && $rowData['INSTRUMENT']=='OPTIDX'){
+                DB::table('table_name')->insert($rowData);
+            }
+            
         }
         catch(Exception $e){
+            echo $e;
             continue;
         }
 
@@ -54,7 +58,7 @@ class copy_csv extends Controller
 }
 public function importDataFromCSV_equity()
 {
-    $filePath = '/home/adarsh/stock_base_v.0/storage/data/NIFTY50 VALUE 20.csv';
+    $filePath = '/home/restolabs/stock_base_v.0/storage/data/dataset.csv';
 
     if (($handle = fopen($filePath, 'r')) !== false) {
         // Skip header row

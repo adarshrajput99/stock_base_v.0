@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('INSTRUMENT');
             $table->string('SYMBOL');
-            $table->date('EXPIRY_DT');
+            $table->text('EXPIRY_DT');
             $table->decimal('STRIKE_PR', 8, 2);
             $table->string('OPTION_TYP');
             $table->decimal('OPEN', 8, 2);
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->decimal('VAL_INLAKH', 10, 2);
             $table->unsignedBigInteger('OPEN_INT');
             $table->integer('CHG_IN_OI');
-            $table->date('TIMESTAMP');
+            $table->text('TIMESTAMP');
             $table->string('Unnamed_15')->nullable();
             $table->timestamps();
         });

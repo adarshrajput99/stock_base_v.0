@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\copy_csv;
+use App\Http\Controllers\daywise_stat;
+use \App\Http\Middleware\OwnCors;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +15,12 @@ use App\Http\Controllers\copy_csv;
 */
 
 //Route::get('/', [copy_csv::class, 'importDataFromCSV']);
-Route::get('/', function(){
-    return view('check');
-});
+// Route::put('/', function(){
+//     return view('check');
+// });\
+
+// Route::get('/{strike}/{from}/{to}/{commission}/{call}/{put}/{stoploss}/{lot}', [daywise_stat::class, 'stat_day'])->name('myroute');
+// Route::get('/',[daywise_stat::class,'stat_day']);
+Route::get('/api/{strike}/{from}/{to}/{commission}/{call}/{sl?}/{lot_size?}', 
+[daywise_stat::class, 'stat_day']);
+

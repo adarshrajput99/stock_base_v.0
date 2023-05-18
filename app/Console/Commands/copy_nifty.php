@@ -4,14 +4,14 @@ namespace App\Console\Commands;
 use Exception;
 use Illuminate\Console\Command;
 use App\Http\Controllers\copy_csv;
-class copy_equity extends Command
+class copy_nifty extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:copy_equity';
+    protected $signature = 'app:copy_nifty';
 
     /**
      * The console command description.
@@ -25,11 +25,9 @@ class copy_equity extends Command
      */
     public function handle()
     {
-
-
         try{
             $object= app()->make(copy_csv::class);
-        $object->importDataFromCSV();
+        $object->importDataFromCSV_equity();
         }
         catch(Exception $e){
             echo $e;
